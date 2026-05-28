@@ -1,18 +1,13 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const index_js_1 = require("../../shared/src/index.js");
-const app = (0, express_1.default)();
-const port = Number(process.env.PORT) || 3000;
+import { formatDateInTimeZone, formatTimeInTimeZone } from '@local/utils';
+import express from 'express';
+const app = express();
+const port = Number(process.env.PORT) || 3001;
 const timezone = 'Asia/Kolkata';
 function getTodayRateSnapshot() {
     const now = new Date();
     return {
-        currentDate: (0, index_js_1.formatDateInTimeZone)(now, timezone),
-        currentTime: (0, index_js_1.formatTimeInTimeZone)(now, timezone),
+        currentDate: formatDateInTimeZone(now, timezone),
+        currentTime: formatTimeInTimeZone(now, timezone),
         timezone,
         goldRate: {
             metal: 'Gold',

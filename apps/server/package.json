@@ -2,18 +2,20 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server/src/index.js",
+  "type": "module",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server/src/index.js"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.4",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "@local/utils": "workspace:*"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",

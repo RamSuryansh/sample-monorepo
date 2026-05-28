@@ -1,11 +1,8 @@
+import { formatDateInTimeZone, formatTimeInTimeZone } from '@local/utils'
 import express from 'express'
-import {
-  formatDateInTimeZone,
-  formatTimeInTimeZone,
-} from '../../shared/src/index.js'
 
 const app = express()
-const port = Number(process.env.PORT) || 3000
+const port = Number(process.env.PORT) || 3001
 const timezone = 'Asia/Kolkata'
 
 function getTodayRateSnapshot() {
