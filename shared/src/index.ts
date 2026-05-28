@@ -39,7 +39,10 @@ const FORMATTER_CACHE: Record<SupportedCurrency, Intl.NumberFormat> = {
   }),
 }
 
-export function convertFromInr(amountInInr: number, currency: SupportedCurrency) {
+export function convertFromInr(
+  amountInInr: number,
+  currency: SupportedCurrency,
+) {
   if (currency === 'USD') {
     return amountInInr / INR_TO_USD_RATE
   }
@@ -61,4 +64,23 @@ export function formatCurrency(
   currency: SupportedCurrency = 'USD',
 ): string {
   return FORMATTER_CACHE[currency].format(amount)
+}
+
+export function formatDateInTimeZone(date: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date)
+}
+
+export function formatTimeInTimeZone(date: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(date)
 }

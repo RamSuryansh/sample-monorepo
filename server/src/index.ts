@@ -1,4 +1,8 @@
 import express from 'express'
+import {
+  formatDateInTimeZone,
+  formatTimeInTimeZone,
+} from '../../shared/src/index'
 
 const app = express()
 const port = Number(process.env.PORT) || 3000
@@ -8,19 +12,8 @@ function getTodayRateSnapshot() {
   const now = new Date()
 
   return {
-    currentDate: new Intl.DateTimeFormat('en-CA', {
-      timeZone: timezone,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(now),
-    currentTime: new Intl.DateTimeFormat('en-GB', {
-      timeZone: timezone,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false,
-    }).format(now),
+    currentDate: formatDateInTimeZone(now, timezone),
+    currentTime: formatTimeInTimeZone(now, timezone),
     timezone,
     goldRate: {
       metal: 'Gold',
